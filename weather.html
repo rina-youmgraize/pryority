@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אפליקציית מזג אוויר</title>
+    <link rel="stylesheet" href="./css/styles2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>מזג האוויר בעיר:</h1>
+        <div class="search-bar">
+            <input type="text" id="city-input" placeholder="הכנס שם עיר">
+            <button id="search-button">חפש</button>
+        </div>
+        <div id="weather-info" class="hidden">
+            <h2 id="city-name"></h2>
+            <h3 id="current-date"></h3>
+            <div id="current-weather">
+                <p id="temperature"></p>
+                <p id="condition-text"></p>
+                <img id="condition-icon" src="" alt="מצב מזג האוויר">
+            </div>
+            <h3>תחזית לשבוע הקרוב:</h3>
+            <div id="forecast-container">
+                </div>
+            <div id="detailed-forecast" class="hidden">
+                <h3>תחזית מפורטת עבור <span id="detailed-day-name"></span></h3>
+                <h4 id="detailed-date"></h4>
+                <div id="hourly-forecast">
+                    </div>
+            </div>
+        </div>
+        <p id="error-message" class="hidden error">שם עיר לא נמצא.</p>
+    </div>
+    <script src="./js/scripts2.js"></script>
+</body>
+</html>

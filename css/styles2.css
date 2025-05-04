@@ -1,0 +1,554 @@
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #6dd5ed, #2193b0); /* רקע התחלתי */
+    background-size: 400% 400%; /* גודל רקע גדול יותר לאנימציה */
+    animation: gradientAnimation 10s ease infinite; /* הפעלת אנימציה */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+    padding: 20px;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    color: #fff;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.search-bar input[type="text"] {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: none;
+    font-size: 18px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.search-bar input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+.search-bar button {
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform 0.1s ease-in-out, background-color 0.3s ease; /* הוספת מעבר לשינוי גודל */
+}
+
+.search-bar button:hover {
+    background-color: #0099cc;
+}
+
+.search-bar button:active {
+    transform: scale(1.5); /* הגדלה קלה בעת לחיצה */
+}
+
+#weather-info {
+    margin-top: 20px;
+
+   
+
+}
+
+#weather-info h2 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 2em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#temperature {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+#condition-text {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#condition-icon {
+    width: 120px;
+    height: 120px;
+    margin-top: 15px;
+}
+
+#forecast-container {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+    padding-bottom: 15px;
+}
+
+.forecast-day {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-right: 10px;
+    text-align: center;
+    flex: 0 0 auto;
+    width: 120px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-day:last-child {
+    margin-right: 0;
+}
+
+.forecast-day .day-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.forecast-day .forecast-icon {
+    width: 50px;
+    height: 50px;
+    margin: 5px 0;
+}
+
+.forecast-day .min-temp,
+.forecast-day .max-temp {
+    font-size: 0.9em;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.error {
+    color: #ff4d4d;
+    margin-top: 20px;
+    font-size: 1.1em;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* רספונסיביות */
+@media (max-width: 768px) {
+    #forecast-container {
+        flex-direction: column;
+        overflow-x: initial;
+    }
+
+    .forecast-day {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .forecast-day:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .forecast-day .day-name {
+        font-size: 1em;
+    }
+
+    .forecast-day .forecast-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .forecast-day .min-temp,
+    .forecast-day .max-temp {
+        font-size: 0.8em;
+    }
+}
+#forecast-container {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+    padding-bottom: 15px;
+}
+
+.forecast-day {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-right: 10px;
+    text-align: center;
+    flex: 0 0 auto;
+    width: 120px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer; /* סמן עכבר לציון שאפשר ללחוץ */
+    transition: transform 0.2s ease-in-out;
+}
+
+.forecast-day:hover {
+    transform: scale(1.05);
+}
+
+.forecast-day:last-child {
+    margin-right: 0;
+}
+
+.forecast-day .day-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.forecast-day .forecast-icon {
+    width: 50px;
+    height: 50px;
+    margin: 5px 0;
+}
+
+.forecast-day .min-temp,
+.forecast-day .max-temp {
+    font-size: 0.9em;
+}
+
+#detailed-forecast {
+    margin-top: 30px;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#detailed-forecast h3 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+#hourly-forecast {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* רשת גמישה לשעות */
+    gap: 10px;
+}
+
+.hourly-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.hourly-item .hourly-time {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.hourly-item .hourly-icon {
+    width: 40px;
+    height: 40px;
+    margin: 5px auto;
+}
+
+.hourly-item .hourly-temp {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.error {
+    color: #ff4d4d;
+    margin-top: 20px;
+    font-size: 1.1em;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* רספונסיביות */
+@media (max-width: 768px) {
+    #forecast-container {
+        flex-direction: column;
+        overflow-x: initial;
+    }
+
+    .forecast-day {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .forecast-day:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .forecast-day .day-name {
+        font-size: 1em;
+    }
+
+    .forecast-day .forecast-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .forecast-day .min-temp,
+    .forecast-day .max-temp {
+        font-size: 0.8em;
+    }
+
+    #hourly-forecast {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+}
+#hourly-forecast {
+    display: flex; /* מעבר לתצוגת שורה */
+    overflow-x: auto; /* אפשרות גלילה אופקית */
+    margin-top: 15px;
+    padding-bottom: 10px; /* כדי שהצל לא יסתיר את הגלילה */
+}
+
+.hourly-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px 15px; /* הוספת ריווח אופקי */
+    border-radius: 5px;
+    text-align: center;
+    margin-right: 10px; /* מרווח בין פריטי שעה */
+    flex: 0 0 auto; /* אלמנטים לא יגדלו/יקטנו אוטומטית, הרוחב שלהם יקבע */
+    width: 80px; /* רוחב קבוע לכל פריט שעה */
+}
+
+.hourly-item:last-child {
+    margin-right: 0; /* הסרת מרווח מיותר בסוף */
+}
+
+.hourly-item .hourly-time {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.hourly-item .hourly-icon {
+    width: 40px;
+    height: 40px;
+    margin: 5px auto;
+}
+
+.hourly-item .hourly-temp {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#weather-info {
+    margin-top: 30px;
+    /* הסרת רקע, גבולות וצל */
+    background-color: transparent;
+    padding: 0; /* הסרת פדינג */
+    border-radius: 0;
+    box-shadow: none;
+    text-align: center; /* שמירה על מרכוז הטקסט */
+}
+
+#weather-info h2 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 2em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+
+#temperature {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+#condition-text {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#condition-icon {
+    width: 120px;
+    height: 120px;
+    margin-top: 15px;
+}
+
+#forecast-container {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+    padding-bottom: 15px;
+}
+
+.forecast-day {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-right: 10px;
+    text-align: center;
+    flex: 0 0 auto;
+    width: 120px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.forecast-day:hover {
+    transform: scale(1.05);
+}
+
+.forecast-day:last-child {
+    margin-right: 0;
+}
+
+.forecast-day .day-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.forecast-day .forecast-icon {
+    width: 50px;
+    height: 50px;
+    margin: 5px 0;
+}
+
+.forecast-day .min-temp,
+.forecast-day .max-temp {
+    font-size: 0.9em;
+}
+
+#detailed-forecast {
+    margin-top: 30px;
+    text-align: left;
+    background-color: transparent;
+    padding: 20px 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+#detailed-forecast h3 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+#hourly-forecast {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 15px;
+    padding-bottom: 10px;
+}
+
+.hourly-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-align: center;
+    margin-right: 10px;
+    flex: 0 0 auto;
+    width: 80px;
+}
+
+.hourly-item:last-child {
+    margin-right: 0;
+}
+
+.hourly-item .hourly-time {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.hourly-item .hourly-icon {
+    width: 40px;
+    height: 40px;
+    margin: 5px auto;
+}
+
+.hourly-item .hourly-temp {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.error {
+    color: #ff4d4d;
+    margin-top: 20px;
+    font-size: 1.1em;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+/* רספונסיביות */
+@media (max-width: 768px) {
+    #forecast-container {
+        flex-direction: column;
+        overflow-x: initial;
+    }
+
+    .forecast-day {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .forecast-day:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .forecast-day .day-name {
+        font-size: 1em;
+    }
+
+    .forecast-day .forecast-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .forecast-day .min-temp,
+    .forecast-day .max-temp {
+        font-size: 0.8em;
+    }
+
+    #hourly-forecast {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+}
