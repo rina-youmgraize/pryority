@@ -40,6 +40,6 @@ if (p) {
     if (p.showForex == false) {
         document.getElementById("converterCard").style.display = "none";
     }
-
+document.getElementById("picture").src = p.picture;
 
 }
