@@ -14,7 +14,7 @@
     padding: 20px; */ */
 /* } */
 
-@keyframes gradientAnimation {
+@keyframes  gradientAnimation {
     0% {
         background-position: 0% 50%;
     }
@@ -29,7 +29,12 @@
 #wether-container {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: auto;
-    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    color: #2d3438;
+ background-color: #ced2fb;
+  border-color: #8f98f9;
+    border-radius: 10px;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(30, 48, 243, 0.25);
     background-size: 400% 400%;
     animation: gradientAnimation 10s ease infinite;
     display: flex;
@@ -37,9 +42,9 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #fff;
     padding: 20px;
 }
+
 
 h1 {
     color: #fff;
@@ -83,7 +88,7 @@ h1 {
 }
 
 .search-bar button:active {
-    transform: scale(1.5); /* הגדלה קלה בעת לחיצה */
+    transform: scale(2); /* הגדלה קלה בעת לחיצה */
 }
 
 #weather-info {
@@ -290,7 +295,7 @@ h1 {
 }
 
 .hidden {
-    display: none !important;
+    display:  none !important;
 }
 
 .error {
@@ -340,7 +345,7 @@ h1 {
 #hourly-forecast {
     display: flex; /* מעבר לתצוגת שורה */
     overflow-x: auto; /* אפשרות גלילה אופקית */
-    margin-top: 15px;
+    margin-top: 10px;
     padding-bottom: 10px; /* כדי שהצל לא יסתיר את הגלילה */
 }
 
@@ -351,11 +356,11 @@ h1 {
     text-align: center;
     margin-right: 10px; /* מרווח בין פריטי שעה */
     flex: 0 0 auto; /* אלמנטים לא יגדלו/יקטנו אוטומטית, הרוחב שלהם יקבע */
-    width: 80px; /* רוחב קבוע לכל פריט שעה */
+    width: 50px; /* רוחב קבוע לכל פריט שעה */
 }
 
 .hourly-item:last-child {
-    margin-right: 0; /* הסרת מרווח מיותר בסוף */
+    margin-right:auto; /* הסרת מרווח מיותר בסוף */
 }
 
 .hourly-item .hourly-time {
@@ -552,6 +557,8 @@ h1 {
     }
 
     #hourly-forecast {
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+        display: none;
+    flex-direction: column;
     }
 }
