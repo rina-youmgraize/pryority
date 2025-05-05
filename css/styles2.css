@@ -1,18 +1,18 @@
 
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* body { */
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     background: linear-gradient(135deg, #6dd5ed, #2193b0); /* רקע התחלתי */
-    background-size: 400% 400%; /* גודל רקע גדול יותר לאנימציה */
-    animation: gradientAnimation 10s ease infinite; /* הפעלת אנימציה */
-    display: flex;
-    justify-content: center;
+    /* background-size: 400% 400%; /* גודל רקע גדול יותר לאנימציה */
+    /* animation: gradientAnimation 10s ease infinite; הפעלת אנימציה
+    display: flex; */ */
+    /* justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    color: #fff;
-    padding: 20px;
-}
+    min-height: 100vh; */
+    /* color: #fff;
+    padding: 20px; */ */
+/* } */
 
 @keyframes gradientAnimation {
     0% {
@@ -26,16 +26,19 @@ body {
     }
 }
 
-.container {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    max-width: 500px;
-    width: 100%;
+#wether-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: auto;
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+    padding: 20px;
 }
 
 h1 {
