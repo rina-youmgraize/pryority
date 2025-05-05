@@ -241,6 +241,6 @@ document.getElementById("updateBtn").addEventListener(
         localStorage.setItem("portfolios", JSON.stringify(portfolioFromStorage));
         spinner.style.display = "none";
         alert("Portfilio data saved successfully.");
-        window.location.href = "portfolio.html";
+        window.location.href = `index.html?id=${idUser}`;
     }
 );
