@@ -40,19 +40,23 @@ if (p) {
     if (p.showForex == false) {
         document.getElementById("converterCard").style.display = "none";
     }
-document.getElementById("picture").src = p.picture;
-
+    document.getElementById("picture").src = p.picture;
+    document.getElementById("titleFromData").innerText = p.title;
+    document.getElementById("spanFullName").innerText = p.fullName;
+    document.getElementById("aboutSectionFromData").innerText = p.about;
+    document.getElementById("linkedInLink").href = p.linkedAddr;
+    document.getElementById("gitLink").href = p.gitAddr;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const links = document.querySelectorAll('.d-flex.justify-content-center.fs-2.gap-4 a');
+// document.addEventListener('DOMContentLoaded', function() {
+// const links = document.querySelectorAll('.d-flex.justify-content-center.fs-2.gap-4 a');
 
-    links.forEach(link => {
-      const iconClass = link.querySelector('i').classList;
-      if (iconClass.contains('bi-linkedin')) {
-        link.href = 'https://www.linkedin.com/in/%D7%A8%D7%99%D7%A0%D7%94-%D7%99%D7%95%D7%A0%D7%92%D7%A8%D7%99%D7%99%D7%96-75661233a';
-      } else if (iconClass.contains('bi-github')) {
-        link.href = 'https://github.com/rina-youmgraize';
-      }
-    });
-  });
+// links.forEach(link => {
+//   const iconClass = link.querySelector('i').classList;
+//   if (iconClass.contains('bi-linkedin')) {
+//     link.href = 'https://www.linkedin.com/in/%D7%A8%D7%99%D7%A0%D7%94-%D7%99%D7%95%D7%A0%D7%92%D7%A8%D7%99%D7%99%D7%96-75661233a';
+//   } else if (iconClass.contains('bi-github')) {
+//     link.href = 'https://github.com/rina-youmgraize';
+//   }
+// });
+//   });
