@@ -212,6 +212,19 @@ document.getElementById("updateBtn").addEventListener(
             // idUser should already be set above.   
         }
 
+
+        //if "new" - check if already exists by userName or email
+        if (pageStatus == "New") {
+            let test = portfolioFromStorage.find(item => (item.userName == userName.value || item.email == eMail.value));
+            if (test) {
+                spinner.style.display = "none";
+                alert(`A Portfolio with this User Name or Email address already exists! Use Login area on top-right of the page.`);
+                return;
+            }
+        }
+
+
+
         //deal with picture
         let imgOn64 = "";
         let defaultPicture = "./resources/user.png";
