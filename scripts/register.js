@@ -1,5 +1,5 @@
 class PortfolioUser {
-    constructor(id, fullName, age, title, picture, userName, email, phone, city, password, about, skills, projects, gitAddr, linkedAddr, showWeather, showForex) {
+    constructor(id, fullName, age, title, picture, userName, email, phone, city, password, about, skills, projects, gitAddr, linkedAddr, showWeather, showForex, areas) {
         this.id = id;
         this.fullName = fullName;
         this.age = age;
@@ -17,6 +17,7 @@ class PortfolioUser {
         this.linkedAddr = linkedAddr;
         this.showWeather = showWeather;
         this.showForex = showForex;
+        this.areas = areas;
     }
 }
 
@@ -102,6 +103,17 @@ function loadUserDataIntoForm(idUser) {
         linkedInAddr.value = p.linkedAddr;
         addWeather.checked = p.showWeather;
         addForex.checked = p.showForex;
+
+        //area1,2,3:
+        if (Array.isArray(p.areas)) {
+            if (p.areas.length > 0) {
+                for (let i = 0; i < 3; i++) {
+                    if (p.areas[i] != null && p.areas[i].length > 0) {
+                        document.getElementById(`area${i + 1}`).value = p.areas[i];
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -150,6 +162,7 @@ document.getElementById("updateBtn").addEventListener(
         // linkedInAddr
         // addWeather
         // addForex
+        // areas
 
         //pageStatus ("New" / "Update")
         //idUser (global, by degault == undefined)
@@ -221,9 +234,19 @@ document.getElementById("updateBtn").addEventListener(
             }
         }
 
+        //areas
+        let areas = ["", "", ""];
+        for (i = 1; i <= 3; i++) {
+            let tmpArea = document.getElementById(`area${i}`).value;
+            if (tmpArea.length > 0) {
+                areas[i - 1] = tmpArea;
+            }
+        }
+
+
         let portfolio = new PortfolioUser(idUser, fullName.value, age.value, academinTitle.value, finalPicture, userName.value,
             eMail.value, phone.value, ciTy.value, password.value, aboutTxtArea.value, skillsTxtArea.value, projsTxtArea.value,
-            gitAddr.value, linkedInAddr.value, addWeather.checked, addForex.checked);
+            gitAddr.value, linkedInAddr.value, addWeather.checked, addForex.checked, areas);
 
         if (pageStatus == "New") {
             portfolioFromStorage.push(portfolio);
@@ -240,7 +263,6 @@ document.getElementById("updateBtn").addEventListener(
         }
         localStorage.setItem("portfolios", JSON.stringify(portfolioFromStorage));
         spinner.style.display = "none";
-        alert("Portfilio data saved successfully.");
         window.location.href = `index.html?id=${idUser}`;
     }
 );

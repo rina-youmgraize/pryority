@@ -33,6 +33,7 @@ if (p) {
     // p.linkedAddr;
     // p.showWeather;
     // p.showForex;
+    // p.areas
 
     if (p.showWeather == false) {
         document.getElementById("wether-container").style.display = "none";
@@ -46,6 +47,19 @@ if (p) {
     document.getElementById("aboutSectionFromData").innerText = p.about;
     document.getElementById("linkedInLink").href = p.linkedAddr;
     document.getElementById("gitLink").href = p.gitAddr;
+
+    tempAreasCompleteString = ""
+    if (Array.isArray(p.areas)) {
+        for (let i in p.areas) {
+            if (p.areas[i].length > 0) {
+                tempAreasCompleteString += ((tempAreasCompleteString.length > 0 ? '&nbsp;&middot;&nbsp;' : '') + p.areas[i]);
+            }
+        }
+    }
+    if (tempAreasCompleteString.length == 0) {
+        tempAreasCompleteString = "Portfolio:"
+    }
+    document.getElementById("areasString").innerHTML = tempAreasCompleteString;
 }
 
 // document.addEventListener('DOMContentLoaded', function() {
@@ -60,3 +74,11 @@ if (p) {
 //   }
 // });
 //   });
+
+document.getElementById("editPortfolio").addEventListener(
+    'click',
+        () => {
+            if (!id) return;
+            window.location.href = `register.html?pageStatus=Update&idUser=${id}`;
+        }
+);
