@@ -25,11 +25,11 @@
   --bs-white: #fff;
   --bs-gray: #6c757d;
   --bs-gray-dark: #343a40;
-  --bs-gray-100: #f8f9fa;
+  --bs-gray-100: #ce9bd9;
   --bs-gray-200: #e9ecef;
-  --bs-gray-300: #dee2e6;
+  --bs-gray-300: #866389;
   --bs-gray-400: #ced4da;
-  --bs-gray-500: #adb5bd;
+  --bs-gray-500: #dc88e3;
   --bs-gray-600: #6c757d;
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
@@ -2141,12 +2141,12 @@ textarea.form-control-lg {
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  background-color: #fff;
+  background-color: #ea8e8e;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   background-size: 16px 12px;
-  border: 1px solid #ced4da;
+  border: 1px solid #a4caf0;
   border-radius: 0.375rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
@@ -2523,8 +2523,8 @@ textarea.form-control-lg {
   color: #212529;
   text-align: center;
   white-space: nowrap;
-  background-color: #e9ecef;
-  border: 1px solid #ced4da;
+  background-color: #c581d6;
+  border: 1px solid #f3ade2;
   border-radius: 0.375rem;
 }
 
@@ -4578,7 +4578,7 @@ textarea.form-control-lg {
   --bs-badge-padding-y: 0.35em;
   --bs-badge-font-size: 0.75em;
   --bs-badge-font-weight: 700;
-  --bs-badge-color: #fff;
+  --bs-badge-color: #110d0d;
   --bs-badge-border-radius: 0.375rem;
   display: inline-block;
   padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
@@ -7630,6 +7630,8 @@ textarea.form-control-lg {
 
 .mb-0 {
   margin-bottom: 0 !important;
+  color: black;
+  transition: color 0.3s ease-in-out;
 }
 
 .mb-1 {
@@ -7650,6 +7652,8 @@ textarea.form-control-lg {
 
 .mb-5 {
   margin-bottom: 3rem !important;
+  color: black;
+  transition: color 0.3s ease-in-out;
 }
 
 .mb-auto {
@@ -8124,7 +8128,10 @@ textarea.form-control-lg {
 
 .text-center {
   text-align: center !important;
+  color: white;
+  transition: color 0.3s ease-in-out;
 }
+
 
 .text-decoration-none {
   text-decoration: none !important;
@@ -11569,15 +11576,7 @@ html {
   max-height: 40rem;
   max-width: 40rem;
 }
-.profile .profile-img {
-  height: 80vw;
-  max-height: 45rem;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 40px;
-}
+
 .profile .dots-1 {
   position: absolute;
   width: 3vw;
@@ -11715,4 +11714,86 @@ html {
     left: -2vw;
   }
 }
+@keyframes slide {
+  0% {
+      transform: translateX(-20px); 
+  }
+  50% {
+      transform: translateX(50px);  
+  }
+  100% {
+      transform: translateX(-20px); 
+  }
+}
+
+.slide-animation {
+  animation: slide 5s infinite alternate ease-in-out; 
+}
+#col-xxl-8{
+  background :#ce9bd9;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.gradient-animation {
+  width: 200px;
+  height: 200px;
+  border-color: #a4a7c5;
+  background-image:linear-gradient(45deg , #8a2be2, #7f00ff, #e21e80);
+  background-size: 300% 100%; 
+  animation: colorChange 5s infinite alternate;
+}
+
+@keyframes colorChange {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.card {
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+  animation: colorShift 3s infinite alternate;
+}
+
+@keyframes colorShift {
+  0%   { background-color: #2e003e; } /* סגול כהה */
+  50%  { background-color: #1a1a6f; } /* כחול כהה */
+  100% { background-color: #000000; } /* שחור */
+}
+.card:hover .p-5 {
+  color: white;
+  transition: color 0.3s ease-in-out;
+}
+
+.profile-img {
+  animation: pulseZoomGlow 3s infinite ease-in-out;
+ 
+}
+
+@keyframes pulseZoomGlow {
+  0% {
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.4); /* סגול בהיר */
+  }
+  50% {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(0, 0, 255, 0.6), 0 0 60px rgba(75, 0, 130, 0.4); /* כחול + סגול כהה */
+  }
+  100% {
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.4); /* חזרה לסגול בהיר */
+  }
+}
+
 

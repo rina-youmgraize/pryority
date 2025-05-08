@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="./css/styles2.css">
         <link rel="stylesheet" href="./styles/portfolio.css">
     </head>
-    <body class="d-flex flex-column h-100">
+    <body class="d-flex flex-column h-100" id="gradient-animation">
         
         <main class="flex-shrink-0">
             <button class="btn btn-outline-light" id="editPortfolio" style="color: blue;">Edit Portfolio</button>
@@ -33,7 +33,7 @@
                             <div class="text-center text-xxl-start">
                                 <div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase" id="areasString">Design &middot; Development &middot; Marketing</div></div>
                                 <div class="fs-3 fw-light text-muted" id="titleFromData">I am accountant </div>
-                                <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline" id="spanFullName">Rina youngraiz I am Mother of 3 children</span></h1>
+                                <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline" id="spanFullName"></span></h1>
                                 
                             </div>
                         </div>
@@ -163,23 +163,22 @@
                 </div>
             </header>
             <!-- About Section-->
-            <section class="bg-light py-5">
-                <div class="container px-5">
-                    <div class="row gx-5 justify-content-center">
-                        <div class="col-xxl-8">
-                            <div class="text-center my-5">
-                                <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">About Me</span></h2>
-                                <p class="lead fw-light mb-4" id="aboutSectionFromData">My name is  rina I am a student at Full Stack</p>
-                                <div class="d-flex justify-content-center fs-2 gap-4">
-            
-                                    <a class="text-gradient" href="#!" id="linkedInLink" target="_blank"><i class="bi bi-linkedin"></i></a>
-                                    <a class="text-gradient" href="#!" id="gitLink" target="_blank"><i class="bi bi-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
+            <section class="">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-xxl-8">
+                <div class="text-center my-5 slide-animation"> <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">About Me</span></h2>
+                    <p class="lead fw-light mb-4" id="aboutSectionFromData">My name is   rina I am a student at Full Stack</p>
+                    <div class="d-flex justify-content-center fs-2 gap-4">
+                        <a class="text-gradient" href="#!" id="linkedInLink" target="_blank"><i class="bi bi-linkedin"></i></a>
+                        <a class="text-gradient" href="#!" id="gitLink" target="_blank"><i class="bi bi-github"></i></a>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </div>
+</section>
+           
         </main>
         <!-- Footer-->
        
