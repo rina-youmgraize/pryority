@@ -143,7 +143,7 @@ body {
     position: absolute !important;
     display: flex;
     flex-direction: row;
-    height: 35px;
+    height: 38px;
     right: 7% !important;
     /* background-color: cyan; */
     width: fit-content;
@@ -166,4 +166,8 @@ body {
 
 #goBtn {
     margin-left: 5px;
+}
+
+#lblOrLogin {
+    margin-top: 5.5px;
 }
