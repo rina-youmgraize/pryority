@@ -77,8 +77,15 @@ if (p) {
 
 document.getElementById("editPortfolio").addEventListener(
     'click',
-        () => {
-            if (!id) return;
-            window.location.href = `register.html?pageStatus=Update&idUser=${id}`;
-        }
+    () => {
+        if (!id) return;
+        window.location.href = `register.html?pageStatus=Update&idUser=${id}`;
+    }
+);
+
+document.getElementById("registerNew").addEventListener(
+    'click',
+    () => {
+        window.location.href = `register.html`;
+    }
 );

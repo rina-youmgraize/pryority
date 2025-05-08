@@ -22,6 +22,31 @@ class PortfolioUser {
 }
 
 const sleep = (timeInSeconds) => new Promise((resolve) => setTimeout(resolve, 1000 * timeInSeconds));
+
+let portfoliosArrayFromStorage = [];
+if (localStorage.getItem("portfolios")) {
+    portfoliosArrayFromStorage = JSON.parse(localStorage.getItem("portfolios"));
+}
+let loginByPassword = document.getElementById("loginByPassword");
+let loginByEMail = document.getElementById("loginByEMail");
+
+function loginPlease() {
+    let mail = loginByEMail.value;
+    let pass = loginByPassword.value;
+    if (mail == "" || pass == "") {
+        return;
+    }
+    let test = portfoliosArrayFromStorage.find(item => (item.email == mail || item.password == pass));
+    if (test) {
+        //goto index
+        window.location.href = `index.html?id=${test.id}`;
+    } else {
+        alert("No such user found with these mail address and password.");
+    }
+}
+
+
+
 let fullName = document.getElementById("fullName");
 let age = document.getElementById("age");
 let academinTitle = document.getElementById("academinTitle");
@@ -68,7 +93,6 @@ if (pageStatus == null) {
 
 function loadUserDataIntoForm(idUser) {
     if (idUser == null || isNaN(idUser)) return;
-    let portfoliosArrayFromStorage = [];
     if (localStorage.getItem("portfolios")) {
         portfoliosArrayFromStorage = JSON.parse(localStorage.getItem("portfolios"));
     } else {
@@ -279,3 +303,6 @@ document.getElementById("updateBtn").addEventListener(
         window.location.href = `index.html?id=${idUser}`;
     }
 );
+
+
+

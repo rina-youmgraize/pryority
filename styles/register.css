@@ -6,18 +6,10 @@ body {
     position: relative;
     height: 100%;
 }
-@media (min-width: 992px){
-    #rightMenu{
-        position: relative;
-        right: 6%;
-    }
-    .profInline{
-        flex-direction: column;
-    }
-}
 .container{
     margin-top: 2%;
     margin-bottom: 2%;
+    padding: 8px;
 }
 .account-settings .user-profile {
     margin: 0 0 1rem 0;
@@ -145,4 +137,33 @@ body {
 .AddServicesInline input{
     margin-left: 20px;
     margin-right: 40px;
+}
+
+ #loginDiv {
+    position: absolute !important;
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+    right: 7% !important;
+    /* background-color: cyan; */
+    width: fit-content;
+ }
+ #loginDiv input {
+    max-width: 150px;
+ }
+ @media (max-width: 992px){
+    #rightMenu{
+        position: relative;
+        right: 6%;
+    }
+    .profInline{
+        flex-direction: column;
+    }
+    .container {
+        padding: 80px;
+    }
+}
+
+#goBtn {
+    margin-left: 5px;
 }
