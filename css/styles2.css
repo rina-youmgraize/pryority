@@ -14,6 +14,12 @@
     padding: 20px; */ */
 /* } */
 
+/* body {
+    margin: 0;
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    animation: gradientAnimation 10s ease infinite;
+} */
+
 @keyframes  gradientAnimation {
     0% {
         background-position: 0% 50%;
@@ -93,9 +99,6 @@ h1 {
 
 #weather-info {
     margin-top: 20px;
-
-   
-
 }
 
 #weather-info h2 {
