@@ -114,9 +114,11 @@
                         <h6 class="mb-2">About</h6>
                         <textarea class="form-control" name="aboutTxt" id="aboutTxtArea" rows="3"></textarea>
                     </div>
-                    <div class="prof">
+                    <div class="prof" id="skillsOuterDiv">
                         <h6 class="mb-2">Your Skills</h6>
-                        <textarea class="form-control" name="skillsTxt" id="skillsTxtArea" rows="3"></textarea>
+                        <!-- <textarea class="form-control" name="skillsTxt" id="skillsTxtArea" rows="3"></textarea> -->
+                        <button id="addASkillBtn" class="btn btn-primary" title="Add a Skill..." onclick="addSkill()">+</button><br>
+                        <div id="skillsDiv"></div>
                     </div>
                     <div class="prof">
                         <h6 class="mb-2">Your Projects</h6>

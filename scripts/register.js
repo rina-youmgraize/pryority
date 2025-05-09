@@ -62,7 +62,8 @@ let thePicOnSide = document.getElementById("thePic");
 let spinner = document.getElementById("spinner");
 
 let aboutTxtArea = document.getElementById("aboutTxtArea");
-let skillsTxtArea = document.getElementById("skillsTxtArea");
+// let skillsTxtArea = document.getElementById("skillsTxtArea");
+let skillsDiv = document.getElementById("skillsDiv");
 let projsTxtArea = document.getElementById("projsTxtArea");
 let gitAddr = document.getElementById("gitAddr");
 let linkedInAddr = document.getElementById("linkedInAddr");
@@ -92,6 +93,7 @@ if (pageStatus == null) {
 }
 
 function loadUserDataIntoForm(idUser) {
+    let i = 0;
     if (idUser == null || isNaN(idUser)) return;
     if (localStorage.getItem("portfolios")) {
         portfoliosArrayFromStorage = JSON.parse(localStorage.getItem("portfolios"));
@@ -121,7 +123,7 @@ function loadUserDataIntoForm(idUser) {
         ciTy.value = p.city;
         password.value = p.password;
         aboutTxtArea.value = p.about;
-        skillsTxtArea.value = p.skills;
+        // skillsTxtArea.value = p.skills;
         projsTxtArea.value = p.projects;
         gitAddr.value = p.gitAddr;
         linkedInAddr.value = p.linkedAddr;
@@ -131,14 +133,28 @@ function loadUserDataIntoForm(idUser) {
         //area1,2,3:
         if (Array.isArray(p.areas)) {
             if (p.areas.length > 0) {
-                for (let i = 0; i < 3; i++) {
+                for (i = 0; i < 3; i++) {
                     if (p.areas[i] != null && p.areas[i].length > 0) {
                         document.getElementById(`area${i + 1}`).value = p.areas[i];
                     }
                 }
             }
         }
+
+        //p.skills array
+        let num = 0;
+        if (Array.isArray(p.skills)) {
+            for (i in p.skills) {
+                if (p.skills[i] != "") {
+                    //add it
+                    addSkill();
+                    num = Number(i) + 1;
+                    document.getElementById(`skill${num}`).value = p.skills[i];
+                }
+            }
+        }
     }
+    document.getElementById("userName").focus();
 }
 
 function takeImg(file) {
@@ -180,7 +196,7 @@ document.getElementById("updateBtn").addEventListener(
         // age
         // academinTitle
         // aboutTxtArea
-        // skillsTxtArea
+        // skill${numSkill} by: skillsDiv.childElementCount
         // projsTxtArea
         // gitAddr 
         // linkedInAddr
@@ -271,7 +287,7 @@ document.getElementById("updateBtn").addEventListener(
             }
         }
 
-        //areas
+        //areas array
         let areas = ["", "", ""];
         for (i = 1; i <= 3; i++) {
             let tmpArea = document.getElementById(`area${i}`).value;
@@ -280,9 +296,20 @@ document.getElementById("updateBtn").addEventListener(
             }
         }
 
+        //skills array
+        let skillsArr = [];
+        // skill${numSkill} by: skillsDiv.childElementCount
+        for (i = 1; i <= skillsDiv.childElementCount; i++) {
+            let tempSkill = document.getElementById(`skill${i}`);
+            if (tempSkill) {
+                if (tempSkill.value != "") {
+                    skillsArr.push(tempSkill.value);
+                }
+            }
+        }
 
         let portfolio = new PortfolioUser(idUser, fullName.value, age.value, academinTitle.value, finalPicture, userName.value,
-            eMail.value, phone.value, ciTy.value, password.value, aboutTxtArea.value, skillsTxtArea.value, projsTxtArea.value,
+            eMail.value, phone.value, ciTy.value, password.value, aboutTxtArea.value, skillsArr, projsTxtArea.value,
             gitAddr.value, linkedInAddr.value, addWeather.checked, addForex.checked, areas);
 
         if (pageStatus == "New") {
@@ -304,5 +331,43 @@ document.getElementById("updateBtn").addEventListener(
     }
 );
 
+function deleteSkill(numOfSkill) {
+    if (numOfSkill == null) return;
+    if (isNaN(numOfSkill)) return;
+    let divId = `immdt${numOfSkill}`;
+    document.getElementById(divId).remove();
+}
+
+function addSkill() {
+    //The container div is called: skillsDiv
+    let numSkill = skillsDiv.childElementCount + 1;
+
+    //the immediate div is: skillsImmdtDiv
+    let skillsImmdtDiv = document.createElement("div");
+    skillsImmdtDiv.className = "immediates";
+    skillsImmdtDiv.id = `immdt${numSkill}`
+
+    //creating a new "skill" span element
+    let skill = document.createElement("input");
+    skill.type = "text";
+    skill.className = "skillClass";
+
+    skill.id = `skill${numSkill}`;
+    skill.placeholder = "write a skill you have"
+
+    //creating a deletion btn for that skill
+    let newBtn = document.createElement("button");
+    newBtn.id = `deleteSkill${numSkill}`;
+    newBtn.className = "deleteSkillBtnClass btn-secondary";
+    newBtn.addEventListener('click', () => { deleteSkill(numSkill) });
+    newBtn.title = "Delete this skill";
+
+    //append to skillsImmdtDiv
+    skillsImmdtDiv.append(skill, newBtn)
+
+    //append to skillsDiv
+    skillsDiv.append(skillsImmdtDiv);
+    skill.focus();
+}
 
 

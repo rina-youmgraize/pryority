@@ -171,3 +171,44 @@ body {
 #lblOrLogin {
     margin-top: 5.5px;
 }
+
+#addASkillBtn{
+    margin-bottom: 5px;
+}
+#skillsDiv{
+    /* background-color: cyan; */
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.immediates{
+    /* background-color: cyan; */
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;    
+}
+.skillClass{
+    margin: 5px;
+}
+.skillClass:focus{
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25);
+}
+.deleteSkillBtnClass{
+    padding: 0;
+    margin-left: 1px;
+    margin-right: 10px;
+    /* margin-top: 60px; */
+    background: no-repeat center/70% url("../assets/delete.png");
+    border: 1px solid darkgray;
+    width: 30px;
+    height: 30px;
+    /* height: 100%; */
+}
