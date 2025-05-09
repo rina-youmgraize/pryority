@@ -572,8 +572,27 @@ h1 {
     min-height: 0;
     white-space: nowrap;
     overflow: hidden;
+    font-weight: bold;
+    color: #333;
 }
 .oneSkillClass:hover {
     white-space: normal;
     overflow: auto;
 }
+
+.projPictureNice {
+    height: 220px;
+    min-height: 0;
+    padding: 2%;
+    right: 2%;
+}
+.cardOfProj {
+    transition: 0.3s;
+}
+.cardOfProj:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+/* .projPictureNice:hover {
+    
+} */
