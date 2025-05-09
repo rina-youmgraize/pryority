@@ -565,3 +565,15 @@ h1 {
     flex-direction: column;
     }
 }
+
+.oneSkillClass {
+    text-overflow: ellipsis;
+    height: 40px;
+    min-height: 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.oneSkillClass:hover {
+    white-space: normal;
+    overflow: auto;
+}
