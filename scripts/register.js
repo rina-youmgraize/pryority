@@ -64,7 +64,8 @@ let spinner = document.getElementById("spinner");
 let aboutTxtArea = document.getElementById("aboutTxtArea");
 // let skillsTxtArea = document.getElementById("skillsTxtArea");
 let skillsDiv = document.getElementById("skillsDiv");
-let projsTxtArea = document.getElementById("projsTxtArea");
+// let projsTxtArea = document.getElementById("projsTxtArea");
+let projsDiv = document.getElementById("projsDiv");
 let gitAddr = document.getElementById("gitAddr");
 let linkedInAddr = document.getElementById("linkedInAddr");
 let addWeather = document.getElementById("addWeather");
@@ -124,7 +125,7 @@ function loadUserDataIntoForm(idUser) {
         password.value = p.password;
         aboutTxtArea.value = p.about;
         // skillsTxtArea.value = p.skills;
-        projsTxtArea.value = p.projects;
+        // projsTxtArea.value = p.projects;
         gitAddr.value = p.gitAddr;
         linkedInAddr.value = p.linkedAddr;
         addWeather.checked = p.showWeather;
@@ -150,6 +151,21 @@ function loadUserDataIntoForm(idUser) {
                     addSkill();
                     num = Number(i) + 1;
                     document.getElementById(`skill${num}`).value = p.skills[i];
+                }
+            }
+        }
+
+        //p.projects array
+        if (Array.isArray(p.projects)) {
+            num = 1;
+            for (i in p.projects) {
+                let oneProj = p.projects[i];
+                if (oneProj.projName != "" && oneProj.projDescr != "" && oneProj.projPicUrl != "") {
+                    addProj();
+                    document.getElementById(`projName${num}`).value = oneProj.projName;
+                    document.getElementById(`projDescr${num}`).value = oneProj.projDescr;
+                    document.getElementById(`projPicUrl${num}`).value = oneProj.projPicUrl;
+                    num++;
                 }
             }
         }
@@ -197,7 +213,13 @@ document.getElementById("updateBtn").addEventListener(
         // academinTitle
         // aboutTxtArea
         // skill${numSkill} by: skillsDiv.childElementCount
-        // projsTxtArea
+
+        //projects array:
+        //document.getElementById(`projName${num}`).value = oneProj.projName;
+        // document.getElementById(`projDescr${num}`).value = oneProj.projDescr;
+        // document.getElementById(`projPicUrl${num}`).value = oneProj.projPicUrl;
+        // projsDiv.childElementCount
+
         // gitAddr 
         // linkedInAddr
         // addWeather
@@ -308,8 +330,31 @@ document.getElementById("updateBtn").addEventListener(
             }
         }
 
+        //projects array:
+        //document.getElementById(`projName${num}`).value = oneProj.projName;
+        // document.getElementById(`projDescr${num}`).value = oneProj.projDescr;
+        // document.getElementById(`projPicUrl${num}`).value = oneProj.projPicUrl;
+        // projsDiv.childElementCount
+        let projsArr = [];
+        for (i = 1; i <= projsDiv.childElementCount; i++) {
+            let projName = document.getElementById(`projName${i}`).value;
+            let projDescr = document.getElementById(`projDescr${i}`).value;
+            let projPicUrl = document.getElementById(`projPicUrl${i}`).value;
+            if (projName == "" && projDescr == "" && projPicUrl == "") {
+                i--;
+                //don't save empty data
+            } else {
+                let tmpObj = {
+                    projName: projName,
+                    projDescr: projDescr,
+                    projPicUrl: projPicUrl
+                };
+                projsArr.push(tmpObj);
+            }
+        }
+
         let portfolio = new PortfolioUser(idUser, fullName.value, age.value, academinTitle.value, finalPicture, userName.value,
-            eMail.value, phone.value, ciTy.value, password.value, aboutTxtArea.value, skillsArr, projsTxtArea.value,
+            eMail.value, phone.value, ciTy.value, password.value, aboutTxtArea.value, skillsArr, projsArr,
             gitAddr.value, linkedInAddr.value, addWeather.checked, addForex.checked, areas);
 
         if (pageStatus == "New") {
@@ -336,6 +381,11 @@ function deleteSkill(numOfSkill) {
     if (isNaN(numOfSkill)) return;
     let divId = `immdt${numOfSkill}`;
     document.getElementById(divId).remove();
+}
+
+function deleteProj(projsImmdtDiv) {
+    if (!projsImmdtDiv) return;
+    projsImmdtDiv.remove();
 }
 
 function addSkill() {
@@ -368,6 +418,51 @@ function addSkill() {
     //append to skillsDiv
     skillsDiv.append(skillsImmdtDiv);
     skill.focus();
+}
+
+function addProj() {
+    //The container div is called: projsDiv
+    let numProj = projsDiv.childElementCount + 1;
+
+    //the immediate div is: projsImmdtDiv
+    let projsImmdtDiv = document.createElement("div");
+    projsImmdtDiv.className = "immediates";
+    projsImmdtDiv.id = `immdtProj${numProj}`
+
+    //creating a new "project Name" span element
+    let projName = document.createElement("input");
+    projName.type = "text";
+    projName.className = "skillClass";
+    projName.id = `projName${numProj}`;
+    projName.placeholder = "Project Name"
+
+    //creating a new "project Description" span element
+    let projDescr = document.createElement("input");
+    projDescr.type = "text";
+    projDescr.className = "skillClass";
+    projDescr.id = `projDescr${numProj}`;
+    projDescr.placeholder = "Project Description"
+
+    //creating a new "project Picture URL" span element
+    let projPicUrl = document.createElement("input");
+    projPicUrl.type = "text";
+    projPicUrl.className = "skillClass";
+    projPicUrl.id = `projPicUrl${numProj}`;
+    projPicUrl.placeholder = "Project's Picture URL"
+
+    //creating a deletion btn for that skill
+    let newBtn = document.createElement("button");
+    newBtn.id = `deleteProj${numProj}`;
+    newBtn.className = "deleteSkillBtnClass btn-secondary";
+    newBtn.addEventListener('click', () => { deleteProj(projsImmdtDiv) });
+    newBtn.title = "Delete this Project";
+
+    //append to projsImmdtDiv
+    projsImmdtDiv.append(projName, projDescr, projPicUrl, newBtn);
+
+    //append to projsDiv
+    projsDiv.append(projsImmdtDiv);
+    projName.focus();
 }
 
 
