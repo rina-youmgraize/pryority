@@ -52,7 +52,7 @@ if (p) {
     if (Array.isArray(p.areas)) {
         for (let i in p.areas) {
             if (p.areas[i].length > 0) {
-                tempAreasCompleteString += ((tempAreasCompleteString.length > 0 ? '&nbsp;&middot;&nbsp;' : '') + p.areas[i]);
+                tempAreasCompleteString += ((tempAreasCompleteString.length > 0 ? '&nbsp;&nbsp;&middot;&nbsp;&nbsp;' : '') + p.areas[i]);
             }
         }
     }
@@ -101,7 +101,7 @@ function showSkills(skillsArr) {
     if (skillsArr.length == 0) return;
     let howManyRows = 0;
     let s = `
-        <div class="card shadow border-0 rounded-4 mb-5">
+        <div class="card shadow border-0 rounded-4 mb-5" id="skillsOuterCard">
             <div class="card-body p-5">
                 <div class="mb-5">
                     <div class="d-flex align-items-center mb-4">

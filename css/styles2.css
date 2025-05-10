@@ -586,13 +586,78 @@ h1 {
     padding: 2%;
     right: 2%;
 }
-.cardOfProj {
+/* .cardOfProj {
     transition: 0.3s;
 }
 .cardOfProj:hover {
     transform: scale(1.1);
     transition: 0.3s;
-}
-/* .projPictureNice:hover {
-    
 } */
+
+
+
+
+@keyframes pulseZoomGlow {
+  0% {
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.4); /* סגול בהיר */
+  }
+  50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 0, 255, 0.6), 0 0 60px rgba(75, 0, 130, 0.4); /* כחול + סגול כהה */
+  }
+  100% {
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.4); /* חזרה לסגול בהיר */
+  }
+}
+#wholePictureZone {
+    animation: pulseZoomGlow 3s infinite ease-in-out;
+}
+
+
+@keyframes slide {
+  0% {
+      transform: translateX(-20px); 
+  }
+  50% {
+      transform: translateX(50px);  
+  }
+  100% {
+      transform: translateX(-20px); 
+  }
+}
+#aboutZone {
+    animation: slide 5s infinite alternate ease-in-out;
+}
+
+@keyframes colorShift {
+  0%   { background-color: #2e003e; } /* סגול כהה */
+  50%  { background-color: #1a1a6f; } /* כחול כהה */
+  100% { background-color: #000000; } /* שחור */
+}
+#skillsOuterCard {
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+#skillsOuterCard:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+    animation: colorShift 3s infinite alternate;
+}
+
+.cardOfProj {
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    background-color: #ffffff;
+    overflow: hidden;   
+}
+.cardOfProj:hover {
+    /* transform: scale(1.02); */
+    transform: scale(1.1);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+    animation: colorShift 3s infinite alternate;
+    color: white;
+    /* transition: color 0.3s ease-in-out; */
+    transition: 0.3s;
+}
