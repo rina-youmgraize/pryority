@@ -8144,7 +8144,7 @@ textarea.form-control-lg {
 
 .text-center {
   text-align: center !important;
-  color: white;
+  color: black;
   transition: color 0.3s ease-in-out;
 }
 
@@ -11632,8 +11632,8 @@ html {
 
 @media (min-width: 576px) {
   .profile {
-    height: 60vw;
-    width: 60vw;
+    height: 50vw;
+    width: 50vw;
   }
   .profile .profile-img {
     height: 65vw;
@@ -11743,13 +11743,13 @@ html {
 }
 
 .slide-animation {
-  animation: slide 5s infinite alternate ease-in-out; 
+  animation: slide 3s ; 
 }
 #col-xxl-8{
   background :#ce9bd9;
   border-radius: 1rem;
   padding: 2rem;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0.1, 0.3);
 }
 
 .gradient-animation {
