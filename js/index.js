@@ -52,7 +52,7 @@ if (p) {
     if (Array.isArray(p.areas)) {
         for (let i in p.areas) {
             if (p.areas[i].length > 0) {
-                tempAreasCompleteString += ((tempAreasCompleteString.length > 0 ? '&nbsp;&middot;&nbsp;' : '') + p.areas[i]);
+                tempAreasCompleteString += ((tempAreasCompleteString.length > 0 ? '&nbsp;&nbsp;&middot;&nbsp;&nbsp;' : '') + p.areas[i]);
             }
         }
     }
@@ -60,6 +60,9 @@ if (p) {
         tempAreasCompleteString = "Portfolio:"
     }
     document.getElementById("areasString").innerHTML = tempAreasCompleteString;
+
+    showSkills(p.skills);
+    showProjects(p.projects);
 }
 
 // document.addEventListener('DOMContentLoaded', function() {
@@ -78,8 +81,124 @@ if (p) {
 
 document.getElementById("editPortfolio").addEventListener(
     'click',
-        () => {
-            if (!id) return;
-            window.location.href = `register.html?pageStatus=Update&idUser=${id}`;
-        }
+    () => {
+        if (!id) return;
+        window.location.href = `register.html?pageStatus=Update&idUser=${id}`;
+    }
 );
+
+document.getElementById("registerNew").addEventListener(
+    'click',
+    () => {
+        window.location.href = `register.html`;
+    }
+);
+
+
+
+
+function showSkills(skillsArr) {
+    if (!Array.isArray(skillsArr)) return;
+    if (skillsArr.length == 0) return;
+    let howManyRows = 0;
+    let s = `
+        <div class="card shadow border-0 rounded-4 mb-5" id="skillsOuterCard">
+            <div class="card-body p-5">
+                <div class="mb-5">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-tools"></i></div>
+                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Professional Skills</span></h3>
+                    </div>    
+    `;
+
+    if (skillsArr.length < 4) {
+        howManyRows = 1;
+    } else {
+        howManyRows = Math.ceil(skillsArr.length / 3);
+    }
+    let i = 0;
+    for (let currRow = 1; currRow <= howManyRows; currRow++) {
+        if (currRow < howManyRows) {
+            s += `<div class="row row-cols-1 row-cols-md-3 mb-4">`;
+        } else {
+            s += `<div class="row row-cols-1 row-cols-md-3">`;
+        }
+
+        // if(currRow == 1){
+        //     s += `<div class="row row-cols-1 row-cols-md-3 mb-4">`;   
+        // }else{
+        //     s += `<div class="row row-cols-1 row-cols-md-3">`;
+        // }
+        i = (currRow - 1) * 3;
+        while (i < (currRow * 3)) {
+            if (skillsArr[i] == undefined) break;
+            s += `<div class="col mb-4 mb-md-0"><div class="oneSkillClass d-flex align-items-center bg-light rounded-4 p-3 h-100">${skillsArr[i]}</div></div>`;
+            // if(i < ((currRow * 3) - 1)){
+            //     s += `<div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">${skillsArr[i]}</div></div>`;
+            // }else{
+            //     s += `<div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">${skillsArr[i]}</div></div>`;
+            // }
+            i++;
+        }
+
+        s += `</div>`;
+    }
+
+    // <div class="row row-cols-1 row-cols-md-3 mb-4">
+    //     <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">SEO/SEM Marketing</div></div>
+    //     <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Statistical Analysis</div></div>
+    //     <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Web Development</div></div>
+    // </div>
+    // <div class="row row-cols-1 row-cols-md-3">
+    //     <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Network Security</div></div>
+    //     <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Adobe Software Suite</div></div>
+    //     <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">User Interface Design</div></div>
+    // </div>
+
+    s += `
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.getElementById("skillsSectionContainer").innerHTML = s;
+}
+
+function showProjects(projsArr) {
+    if (!Array.isArray(projsArr)) return;
+    if (projsArr.length == 0) return;
+    let s = `
+        <div class="container px-5 mb-5">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Projects</span></h1>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-11 col-xl-9 col-xxl-8">   
+    `;
+
+    for (let i = 0; i < projsArr.length; i++) {
+        let oneProj = projsArr[i];
+        s += `
+            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 cardOfProj">
+                <div class="card-body p-0">
+                    <div class="d-flex justify-content-between">
+                        <div class="p-5">
+                            <h2 class="fw-bolder">${oneProj.projName}</h2>
+                            <p>${oneProj.projDescr}</p>
+                        </div>
+                        <img class="rounded float-right projPictureNice" src="${oneProj.projPicUrl}" alt="Project Picture" />
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+
+    s += `
+                </div>
+            </div>
+        </div>    
+    `;
+
+    document.getElementById("projectsOuterContainer").innerHTML = s;
+}

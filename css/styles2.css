@@ -14,8 +14,19 @@
     padding: 20px; */ */
 /* } */
 
+/* <<<<<<< HEAD
 @keyframes gradientAnimation {
     {
+=======
+/* body {
+    margin: 0;
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    animation: gradientAnimation 10s ease infinite;
+} */
+
+/* @keyframes  gradientAnimation { */
+    /* 0% {
+>>>>>>> 48ff5e543c8612b577e688a351869f41add95d1c
         background-position: 0% 50%;
     }
     50% {
@@ -24,7 +35,7 @@
     100% {
         background-position: 0% 50%;
     }
-}
+} */ */
 
 #wether-container {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -93,9 +104,6 @@ h1 {
 
 #weather-info {
     margin-top: 20px;
-
-   
-
 }
 
 #weather-info h2 {
@@ -561,4 +569,100 @@ h1 {
         display: none;
     flex-direction: column;
     }
+}
+
+.oneSkillClass {
+    text-overflow: ellipsis;
+    height: 40px;
+    min-height: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: bold;
+    color: #333;
+}
+.oneSkillClass:hover {
+    white-space: normal;
+    overflow: auto;
+}
+
+.projPictureNice {
+    height: 220px;
+    min-height: 0;
+    padding: 2%;
+    right: 2%;
+}
+/* .cardOfProj {
+    transition: 0.3s;
+}
+.cardOfProj:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+} */
+
+
+
+
+@keyframes pulseZoomGlow {
+  0% {
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.4); /* סגול בהיר */
+  }
+  50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 0, 255, 0.6), 0 0 60px rgba(75, 0, 130, 0.4); /* כחול + סגול כהה */
+  }
+  100% {
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.4); /* חזרה לסגול בהיר */
+  }
+}
+#wholePictureZone {
+    animation: pulseZoomGlow 3s infinite ease-in-out;
+}
+
+
+@keyframes slide {
+  0% {
+      transform: translateX(-20px); 
+  }
+  50% {
+      transform: translateX(50px);  
+  }
+  100% {
+      transform: translateX(-20px); 
+  }
+}
+#aboutZone {
+    animation: slide 5s infinite alternate ease-in-out;
+}
+
+@keyframes colorShift {
+  0%   { background-color: #2e003e; } /* סגול כהה */
+  50%  { background-color: #1a1a6f; } /* כחול כהה */
+  100% { background-color: #000000; } /* שחור */
+}
+#skillsOuterCard {
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+#skillsOuterCard:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+    animation: colorShift 3s infinite alternate;
+}
+
+.cardOfProj {
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    background-color: #ffffff;
+    overflow: hidden;   
+}
+.cardOfProj:hover {
+    /* transform: scale(1.02); */
+    transform: scale(1.1);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+    animation: colorShift 3s infinite alternate;
+    color: white;
+    /* transition: color 0.3s ease-in-out; */
+    transition: 0.3s;
 }
