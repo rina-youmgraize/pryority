@@ -36,7 +36,7 @@ function loginPlease() {
     if (mail == "" || pass == "") {
         return;
     }
-    let test = portfoliosArrayFromStorage.find(item => (item.email == mail || item.password == pass));
+    let test = portfoliosArrayFromStorage.find(item => (item.email == mail && item.password == pass));
     if (test) {
         //goto index
         window.location.href = `index.html?id=${test.id}`;
