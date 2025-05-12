@@ -4,8 +4,8 @@
 /* } */
 
 .converter-card {
-  /* background: #ffffff; */
-  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+  background: #ffffff;
+  /* background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important; */
   border-radius: 10px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   padding: 30px 25px;
