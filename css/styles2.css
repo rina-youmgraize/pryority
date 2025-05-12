@@ -585,11 +585,25 @@ h1 {
     overflow: auto;
 }
 
+#links-reg-edit{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    width: 22%;
+    justify-content: space-between;
+}
+
 .projPictureNice {
     height: 220px;
     min-height: 0;
     padding: 2%;
     right: 2%;
+}
+#picture{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
 }
 /* .cardOfProj {
     transition: 0.3s;
@@ -618,6 +632,7 @@ h1 {
 }
 #wholePictureZone {
     animation: pulseZoomGlow 3s infinite ease-in-out;
+    
 }
 
 
