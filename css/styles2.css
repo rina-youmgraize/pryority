@@ -593,6 +593,23 @@ h1 {
     width: 22%;
     justify-content: space-between;
 }
+#links-reg-edit {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+#links-reg-edit button {
+  flex-shrink: 0;
+}
+
+/* כשרוחב המסך הוא 600 פיקסלים ומטה, הצג את הכפתורים אחד מתחת לשני */
+@media (max-width: 600px) {
+  #links-reg-edit {
+    flex-direction: column; /* מסדר את הפריטים בעמודה */
+    align-items: center; /* ממקם את הפריטים במרכז בציר המשני (אופקי) */
+  }
+}
 
 .projPictureNice {
     height: 220px;
